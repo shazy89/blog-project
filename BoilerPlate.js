@@ -7,7 +7,7 @@ const CounterScreen = () => {
 
    return (
        <View> 
-            <Text> Index Screen</Text>
+            <Text> Current Count</Text>
        </View>
    );
 };
