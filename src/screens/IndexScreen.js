@@ -3,10 +3,12 @@ import { Text, StyleSheet, View, FlatList, Button, TouchableOpacity } from "reac
 import { Context as BlogContext } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'; 
 
-const IndexScreen = () => {
+const IndexScreen = ({navigation}) => {
+  // console.log(navigation)
 const { state, addBlogPost, removeBlogPost } = useContext(BlogContext)
 
    return (
+ 
        <View> 
             <Button title='Add Post' onPress={addBlogPost}/>
              <FlatList 
@@ -14,19 +16,23 @@ const { state, addBlogPost, removeBlogPost } = useContext(BlogContext)
                 keyExtractor={(data) => data.title}
                 renderItem={({item}) => {
                    return ( 
+                <TouchableOpacity onPress={() => navigation.navigate('Show')}>  
                       <View style={styles.row}>
                         <Text style={styles.title}>{item.title}</Text>
                         <Text style={styles.title}>{item.id}</Text>
-                        <TouchableOpacity onPress={() => removeBlogPost()}>
+                        <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
                            <AntDesign style={styles.icon} name="delete" color="black" />
                         </TouchableOpacity>
                      </View>
+                </TouchableOpacity>      
                    );
                 }}
              />
-       </View>
+        </View>
+  
    );
 };
+ 
             
 const styles = StyleSheet.create({
     row: {
