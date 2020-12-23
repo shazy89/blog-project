@@ -15,12 +15,12 @@ const CreateScreen = ({navigation}) => {
             <TextInput style={styles.input} value={content} onChangeText={(text) => setContent(text)}/>
             <Button 
                title='Add Blog Post'
-               onPress={() => addBlogPost(title, content)}  />
+               onPress={() => addBlogPost(title, content, () => {
+                   navigation.navigate('Index');
+               })} />
        </View>
    );
 };
-
-      
 
 const styles = StyleSheet.create({
    input: {
@@ -39,3 +39,5 @@ const styles = StyleSheet.create({
  });
  
  export default CreateScreen;
+      
+

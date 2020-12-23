@@ -6,31 +6,30 @@ import { AntDesign } from '@expo/vector-icons';
 
 const IndexScreen = ({navigation}) => {
   // console.log(navigation)
-const { state, addBlogPost, removeBlogPost } = useContext(BlogContext)
+const { state, removeBlogPost } = useContext(BlogContext)
 
    return (
+      <View> 
+        <FlatList 
+           data={state}
+           keyExtractor={(data) => data.title}
+           renderItem={({item}) => {
+           return ( 
+             <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>  
+                   <View style={styles.row}>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.title}>{item.id}</Text>
+                     <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
+                        <AntDesign style={styles.icon} name="delete" color="black" />
+                     </TouchableOpacity>
+                  </View>
+             </TouchableOpacity>      
+                  );
+               }} />
+       </View>
+  );};
  
-       <View> 
-            <Button title='Add Post' onPress={addBlogPost}/>
-             <FlatList 
-                data={state}
-                keyExtractor={(data) => data.title}
-                renderItem={({item}) => {
-            return ( 
-                <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>  
-                      <View style={styles.row}>
-                           <Text style={styles.title}>{item.title}</Text>
-                           <Text style={styles.title}>{item.id}</Text>
-                        <TouchableOpacity onPress={() => removeBlogPost(item.id)}>
-                           <AntDesign style={styles.icon} name="delete" color="black" />
-                        </TouchableOpacity>
-                     </View>
-                </TouchableOpacity>      
-                   );
-                }} />
-        </View>
-   );};
-          
+           
    IndexScreen.navigationOptions = ({navigation}) => {
    return {
       headerRight: () => (
@@ -43,8 +42,7 @@ const { state, addBlogPost, removeBlogPost } = useContext(BlogContext)
       ),
     };
 }  
- 
-            
+          
 const styles = StyleSheet.create({
     row: {
        flexDirection: 'row', //to show in the same line
@@ -73,6 +71,8 @@ const styles = StyleSheet.create({
       
 
 export default IndexScreen;
+ 
+            
    
 
 
