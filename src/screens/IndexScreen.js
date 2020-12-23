@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { Text, StyleSheet, View, FlatList, Button} from "react-native";
+import { Text, StyleSheet, View, FlatList, Button, TouchableOpacity } from "react-native";
 import { Context as BlogContext } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'; 
 
 const IndexScreen = () => {
-const { state, addBlogPost } = useContext(BlogContext)
+const { state, addBlogPost, removeBlogPost } = useContext(BlogContext)
 
    return (
        <View> 
@@ -16,7 +16,10 @@ const { state, addBlogPost } = useContext(BlogContext)
                    return ( 
                       <View style={styles.row}>
                         <Text style={styles.title}>{item.title}</Text>
-                        <AntDesign style={styles.icon} name="delete" color="black" />
+                        <Text style={styles.title}>{item.id}</Text>
+                        <TouchableOpacity onPress={() => removeBlogPost()}>
+                           <AntDesign style={styles.icon} name="delete" color="black" />
+                        </TouchableOpacity>
                      </View>
                    );
                 }}
@@ -25,11 +28,6 @@ const { state, addBlogPost } = useContext(BlogContext)
    );
 };
             
-   
-
-
-      
-
 const styles = StyleSheet.create({
     row: {
        flexDirection: 'row', //to show in the same line
@@ -49,3 +47,7 @@ const styles = StyleSheet.create({
 });
 
 export default IndexScreen;
+   
+
+
+      
