@@ -28,49 +28,51 @@ const { state, removeBlogPost } = useContext(BlogContext)
                }} />
        </View>
   );};
- 
-           
-   IndexScreen.navigationOptions = ({navigation}) => {
-   return {
-      headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-           <View style={styles.header}>
-               <Text style={styles.title}>Create</Text>
-               <AntDesign style={styles.plusIcon} name="plus"  color="black" />
-           </View>
-        </TouchableOpacity>
-      ),
-    };
+
+  IndexScreen.navigationOptions = ({navigation}) => {
+  return {
+     headerRight: () => (
+       <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+          <View style={styles.header}>
+              <Text style={styles.title}>Create</Text>
+              <AntDesign style={styles.plusIcon} name="plus"  color="black" />
+          </View>
+       </TouchableOpacity>
+     ),
+   };
 }  
-          
+         
 const styles = StyleSheet.create({
-    row: {
-       flexDirection: 'row', //to show in the same line
-       justifyContent: 'space-between', //add space between
-       paddingVertical: 20,
-       paddingHorizontal: 10,
-       borderTopWidth: 1,
-       borderColor: 'grey',
-     
-    },
-    title: {
-       fontSize: 18
-    },
-    icon: {
-       fontSize: 24,
-    },
-    plusIcon: {
-       marginRight: 20,
-       fontSize: 24
-    },
-    header: {
-      flexDirection: 'row',
-      paddingVertical: 2
-    }
+   row: {
+      flexDirection: 'row', //to show in the same line
+      justifyContent: 'space-between', //add space between
+      paddingVertical: 20,
+      paddingHorizontal: 10,
+      borderTopWidth: 1,
+      borderColor: 'grey',
+    
+   },
+   title: {
+      fontSize: 18
+   },
+   icon: {
+      fontSize: 24,
+   },
+   plusIcon: {
+      marginRight: 20,
+      fontSize: 24
+   },
+   header: {
+     flexDirection: 'row',
+     paddingVertical: 2
+   }
 });
-      
+     
 
 export default IndexScreen;
+
+ 
+           
  
             
    
