@@ -1,5 +1,5 @@
 import createDataContext from './createDataContext';
-
+//any time we have to add some kid a new resource just def reducer def functions retur dispcatch and createContext..
 const blogReducer = (state, action) => {
   switch (action.type) {
     case 'add_blogpost':
