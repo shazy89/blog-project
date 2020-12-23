@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
-import { Text, StyleSheet, View, Image, TextInput, ImageBackground } from "react-native";
+import React, { useContext } from 'react';
+import { Text, StyleSheet, View, FlatList} from "react-native";
+import BlogContext from '../context/BlogContext'
 
-
-const CounterScreen = () => {
-
-
+const IndexScreen = () => {
+const blogPosts = useContext(BlogContext)
+  
    return (
        <View> 
-            <Text> Index Screen ajshdjhsj</Text>
+            <Text> Index Screen </Text>
+             <FlatList 
+                data={blogPosts}
+                keyExtractor={(blogPosts) => blogPosts.title}
+                renderItem={({item}) => {
+                   return <Text>{item.title}</Text>
+                }}
+             />
        </View>
    );
 };
@@ -18,4 +25,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default CounterScreen;
+export default IndexScreen;
