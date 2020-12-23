@@ -7,7 +7,7 @@ const CounterScreen = () => {
 
    return (
        <View> 
-            <Text> Index Screen</Text>
+            <Text> Index Screen ajshdjhsj</Text>
        </View>
    );
 };
