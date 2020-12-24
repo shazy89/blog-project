@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const BlogPostForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+const BlogPostForm = ({ onSubmit, initialValues }) => {
+  const [title, setTitle] = useState(initialValues.title);
+  const [content, setContent] = useState(initialValues.content);
 
   return (
     <View>
@@ -24,6 +24,13 @@ const BlogPostForm = ({ onSubmit }) => {
   );
 };
 
+BlogPostForm.defaultProps = {
+  initialValues: {
+    title: '',
+    content: ''
+  }
+}; // default prop system - if we decide not to pass props this object will fill default values
+ // if there is props will use them if not will default props to empty string
 const styles = StyleSheet.create({
   input: {
     fontSize: 18,

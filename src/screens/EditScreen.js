@@ -3,16 +3,19 @@ import { Text, StyleSheet, View, TextInput} from "react-native";
 import BlogPostForm from '../components/BlogPostForm'
 import { Context } from '../context/BlogContext'
 
-const EditScreen = ({navigation}) => {
-    const { state } = useContext(Context) ;
-    const blogPost = state.find((blogPost) => blogPost.id === navigation.getParam('id'));
+const EditScreen = ({ navigation }) => {
+  //  console.log(navigation)
+    const id = navigation.getParam('id')
+    const { state, editBlogPost } = useContext(Context) ;
+    const blogPost = state.find((blogPost) => blogPost.id === id);
 
-return <BlogPostForm onSubmit={() => {
-    
-}} />
-
+return <BlogPostForm 
+   initialValues={{ title: blogPost.title, content: blogPost.content}} 
+   onSubmit={(title, content) => {
+    editBlogPost(id, title, content, () => navigation.pop())
+  }} />
 };
-
+// navigation.pop() will navigate 1 stap back from where we are!!!
 const styles = StyleSheet.create({
     input: {
         fontSize: 18,
