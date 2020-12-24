@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Text, StyleSheet, View, FlatList, Button, TouchableOpacity } from "react-native";
 import { Context as BlogContext } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'; 
@@ -6,7 +6,11 @@ import { AntDesign } from '@expo/vector-icons';
 
 const IndexScreen = ({navigation}) => {
   // console.log(navigation)
-const { state, removeBlogPost } = useContext(BlogContext)
+   const { state, removeBlogPost, getBlogPosts } = useContext(BlogContext)
+   
+   useEffect(() => {
+      getBlogPosts();
+   }, [])
 
    return (
       <View> 
