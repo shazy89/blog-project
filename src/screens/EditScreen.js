@@ -7,9 +7,9 @@ const EditScreen = ({navigation}) => {
     const { state } = useContext(Context) ;
     const blogPost = state.find((blogPost) => blogPost.id === navigation.getParam('id'));
 
-return <BlogPostForm />
-
-
+return <BlogPostForm onSubmit={() => {
+    
+}} />
 
 };
 
@@ -30,4 +30,6 @@ const styles = StyleSheet.create({
 });
 
 export default EditScreen;
+
+
       
