@@ -4,13 +4,21 @@ import { Context as BlogContext } from '../context/BlogContext'
 import { AntDesign } from '@expo/vector-icons'; 
 
 
-const IndexScreen = ({navigation}) => {
+const IndexScreen = ({ navigation }) => {
   // console.log(navigation)
    const { state, removeBlogPost, getBlogPosts } = useContext(BlogContext)
-   
+
    useEffect(() => {
       getBlogPosts();
-   }, [])
+
+   const listener = navigation.addListener('didFocus', () => {
+         getBlogPosts();
+      });
+      
+      return () => {
+         listener.remove();
+      };
+   }, []);
 
    return (
       <View> 
